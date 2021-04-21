@@ -1,7 +1,9 @@
 <h1>Ruby_Calculator_Simulator</h1>
 
-
-<%= number_field_tag :a, params[:a] %>
+<%= form_with(model: calculator) do |tab| %>
+  <%= tab.text_field :first_input , class:"form-control", %>
+  <%= tab.text_field :second_input , class:"form-control", %>
+<% end %>
 
 <table id="table" class="table-bordered text-center">
   <tr>
