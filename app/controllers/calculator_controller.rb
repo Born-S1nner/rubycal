@@ -1,9 +1,12 @@
 class CalculatorController < ApplicationController
   def create
     @calculate = Calculator.find_or_initialize_by(calculate_params)
-
-  end
+    @calculate.request_count += 1
+    @calculate.save
+  rescue
   
+  end
+
   private
   
   def calculate_params
