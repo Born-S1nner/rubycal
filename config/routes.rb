@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :calculators
+  resources :calculator
   root "calculator#index"
 end
