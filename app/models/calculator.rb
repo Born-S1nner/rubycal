@@ -1,11 +1,10 @@
-#t.integer "first_input"
-#t.integer "second_input"
-#t.integer "operation"
-#t.float "result"
-#t.integer "request_count"
-
 class Calculator < ApplicationRecord
   enum operation: [ :sum_op, :difference_op, :multiplication_op, :division_op ]
+
+  validates( :results, numericality: true )
+  validates( :first_input, :second_input, :request_count, numericality: { only_integer:true, less_than: 100, greater_than_or_equal_to: 0 } )
+
+  protected
 
   def calculate
     self.result = eval "#{Float(first_input)} #{operator} #{Integer(second_input)}" 
@@ -23,6 +22,7 @@ class Calculator < ApplicationRecord
     when :difference_op then '-'
     when :multiplication_op then '*'
     when :division_op then '/'
+    end
   end
 
 end
