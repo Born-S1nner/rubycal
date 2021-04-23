@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First input:</strong>
+  <%= @calculation.first_input %>
+</p>
+
+<p>
+  <strong>Second input:</strong>
+  <%= @calculation.second_input %>
+</p>
+
+<p>
+  <strong>Operation:</strong>
+  <%= @calculation.operation %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @calculation.result %>
+</p>
+
+<p>
+  <strong>Requested count:</strong>
+  <%= @calculation.requested_count %>
+</p>
+
+<%= link_to 'Edit', edit_calculation_path(@calculation) %> |
+<%= link_to 'Back', calculations_path %>

@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :calculator
+  resources :calculations
   get '/', to: "calculate#index"
 end
