@@ -64,6 +64,6 @@ class CalculationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def calculation_params
-      params.require(:calculation).permit(:first_input, :second_input, :operation, :result, :requested_count)
+      params.require(:calculation).permit(:first_input, :second_input, :operation)
     end
 end
