@@ -9,6 +9,7 @@ class CalculationsController < ApplicationController
   # GET /calculations/new
   def new
     @calculation = Calculation.new
+
   end
 
   # POST /calculations or /calculations.json
