@@ -6,45 +6,19 @@ class CalculationsController < ApplicationController
     @calculations = Calculation.all
   end
 
-  # GET /calculations/1 or /calculations/1.json
-  def show
-  end
-
   # GET /calculations/new
   def new
     @calculation = Calculation.new
   end
 
-  # GET /calculations/1/edit
-  def edit
-  end
-
   # POST /calculations or /calculations.json
   def create
-    @calculation = Calculation.new(calculation_params)
+    @calculation = Calculation.find_or_initialize_by(calculation_params)
 
-    respond_to do |format|
-      if @calculation.save
-        format.html { redirect_to @calculation, notice: "Calculation was successfully created." }
-        format.json { render :show, status: :created, location: @calculation }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @calculation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+    @calculation.request_count =+ 1
+    @calculation.save
+  rescue
 
-  # PATCH/PUT /calculations/1 or /calculations/1.json
-  def update
-    respond_to do |format|
-      if @calculation.update(calculation_params)
-        format.html { redirect_to @calculation, notice: "Calculation was successfully updated." }
-        format.json { render :show, status: :ok, location: @calculation }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @calculation.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /calculations/1 or /calculations/1.json
