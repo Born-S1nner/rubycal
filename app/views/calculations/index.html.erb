@@ -17,7 +17,7 @@
         <td><%= calculation.first_input %></td>
         <td><%= calculation.operation %></td>
         <td><%= calculation.second_input %></td>
-        <td></td>
+        <td><%= calculation.result %></td>
         <td><%= link_to 'Destroy', calculation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
