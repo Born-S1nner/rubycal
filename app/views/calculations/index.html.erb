@@ -5,10 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>First input</th>
-      <th>Second input</th>
-      <th>Operation</th>
-      <th colspan="3"></th>
+      <th colspan="3">Expression</th>
+      <th>Anwser</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -16,10 +15,9 @@
     <% @calculations.each do |calculation| %>
       <tr>
         <td><%= calculation.first_input %></td>
-        <td><%= calculation.second_input %></td>
         <td><%= calculation.operation %></td>
-        <td><%= link_to 'Show', calculation %></td>
-        <td><%= link_to 'Edit', edit_calculation_path(calculation) %></td>
+        <td><%= calculation.second_input %></td>
+        <td></td>
         <td><%= link_to 'Destroy', calculation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
