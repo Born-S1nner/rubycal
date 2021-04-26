@@ -1,4 +1,4 @@
-
+import React from 'react_ujs'
 class Calculator extends React.Component {
   render () {
     return (
