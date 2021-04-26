@@ -1,10 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
+
 class Calculator extends React.Component {
   render () {
     return (
-      <React.Fragment>
-      </React.Fragment>
+      <h3>Hello from Component</h3>
     );
   }
 }
