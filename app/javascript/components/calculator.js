@@ -3,6 +3,10 @@ class Calculator extends React.Component {
   constructor(props) {
     super(props)
     this.numbers = this.numbers.bind(this)
+    this.oper = this.oper.bind(this)
+
+    this.onChangeInput = this.onChangeInput.bind(this)
+
     this.state = {
       first_input: 0,
       second_input: 0
@@ -11,9 +15,24 @@ class Calculator extends React.Component {
   numbers(e) {
     console.log(e.currentTarget.value)
   }
-  renderInput() {
+  oper(e) {
+    console.log(e.currentTarget.value)
+  }
+  
+  onChangeInput (event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  renderInput(name, value) {
     return(
-      <input/>
+      <input
+        type='number'
+        name={name}
+        value={value}
+        onChange={this.onChangeInput}
+      />
     )
   }
 
@@ -21,8 +40,8 @@ class Calculator extends React.Component {
     return (
       <div>
         <h3>Hello from React gang</h3>
-        {this.renderInput()}
-        {this.renderInput()}
+        {this.renderInput('first_input', this.state.first_input)}
+        {this.renderInput('second_input', this.state.second_input)}
         <div className="row">
           <Buttons display='7' value={7} click={this.numbers} />
           <Buttons display='8' value={8} click={this.numbers} />
