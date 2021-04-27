@@ -13,7 +13,17 @@ class Calculator extends React.Component {
     }
   }
   numbers(e) {
-    console.log(e.currentTarget.value)
+    if (this.state.first_input === 0) {
+      let num = e.currentTarget.value;
+      this.setState({
+        expression: num
+      })
+    } else {
+      let num = this.state.first_input + e.currentTarget.value
+      this.setState({
+        expression: num
+      })
+    }
   }
   oper(e) {
     console.log(e.currentTarget.value)
@@ -71,5 +81,6 @@ class Calculator extends React.Component {
   }
 }
 
+const Buttons = props => <button value={props.value} onClick={props.click}>{props.display}</button>
 
 export default Calculator
