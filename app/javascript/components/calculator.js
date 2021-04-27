@@ -1,8 +1,11 @@
-import React from 'react_ujs'
+import React from "react"
+import PropTypes from "prop-types"
 class Calculator extends React.Component {
   render () {
     return (
-      <h3>Hello from Component</h3>
+      <React.Fragment>
+        <h3>Hello from React gang</h3>
+      </React.Fragment>
     );
   }
 }
