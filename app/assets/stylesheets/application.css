@@ -4,6 +4,12 @@ body {
   font-family: sans-serif;
   font-size: 2em;
 }
+#input {
+  width: 100%;
+}
+#box {
+  display: flex;
+}
 #table {
   background-color: grey;
   color: white;
@@ -11,6 +17,6 @@ body {
   width: 100%;
 }
 #button {
-  background-color: red;
-  
+  background-color: black;
+  color: white;
 }
