@@ -10,3 +10,7 @@ body {
   border: black solid 3px;
   width: 100%;
 }
+#button {
+  background-color: red;
+  
+}
