@@ -5,6 +5,9 @@ class Calculator extends React.Component {
     this.firstNumbers = this.firstNumbers.bind(this)
     this.firstClear = this.firstClear.bind(this)
 
+    this.secondNumbers = this.secondNumbers.bind(this)
+    this.secondClear = this.secondClear.bind(this)
+
     this.onChangeInput = this.onChangeInput.bind(this)
 
     this.state = {
@@ -31,6 +34,25 @@ class Calculator extends React.Component {
     })
   }
   
+  secondNumbers(e) {
+    if (this.state.second_input === 0) {
+      let num = e.currentTarget.value;
+      this.setState({
+        second_input: num
+      })
+    } else {
+      let num = this.state.second_input + e.currentTarget.value
+      this.setState({
+        second_input: num
+      })
+    }
+  }
+  secondClear(e) {
+    this.setState({
+      second_input: 0
+    })
+  }
+
   onChangeInput (event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -43,32 +65,33 @@ class Calculator extends React.Component {
         name={name}
         value={value}
         onChange={this.onChangeInput}
+        id="input"
       />
     )
   }
   tablet(one, two) {
     return(
-      <table className="table">
-        <tr>
+      <div id="table">
+        <div>
           <Buttons display='7' value={7} click={one} />
           <Buttons display='8' value={8} click={one} />
           <Buttons display='9' value={9} click={one} />
-        </tr>
-        <tr>
+        </div>
+        <div>
           <Buttons display='4' value={4} click={one} />
           <Buttons display='5' value={5} click={one} />
           <Buttons display='6' value={6} click={one} />
-        </tr>
-        <tr>
+        </div>
+        <div>
           <Buttons display='1' value={1} click={one} />
           <Buttons display='2' value={2} click={one} />
           <Buttons display='3' value={3} click={one} />
-        </tr>
-        <tr>
+        </div>
+        <div>
           <Buttons display='0' value={0} click={one} />
           <Buttons display='CE' click={two} />
-        </tr>
-      </table>
+        </div>
+      </div>
     )
   }
 
