@@ -70,6 +70,8 @@ class Calculator extends React.Component {
     )
   }
   tablet(one, two) {
+    const Buttons = props => <button value={props.value} onClick={props.click} id="button">{props.display}</button>
+
     return(
       <div id="table">
         <div>
@@ -97,16 +99,19 @@ class Calculator extends React.Component {
 
   render () {
     return (
-      <div>
-        <h3>Hello from React gang</h3>
-        {this.renderInput('first_input', this.state.first_input)}
-        {this.tablet(this.firstNumbers, this.firstClear)}
-        {this.renderInput('second_input', this.state.second_input)}
+      <div id="box">
+        <div>
+          {this.renderInput('first_input', this.state.first_input)}
+          {this.tablet(this.firstNumbers, this.firstClear)}
+        </div>
+        <br/>
+        <div>
+          {this.renderInput('second_input', this.state.second_input)}
+          {this.tablet(this.secondNumbers, this.secondClear)}
+        </div>
       </div>
     );
   }
 }
-
-const Buttons = props => <button value={props.value} onClick={props.click} id="button">{props.display}</button>
 
 export default Calculator
