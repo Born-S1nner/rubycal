@@ -80,7 +80,7 @@ class Calculator extends React.Component {
 
     return(
       <div id="table">
-        <div>
+        <div id="row">
           <Buttons display='7' value={7} click={one} />
           <Buttons display='8' value={8} click={one} />
           <Buttons display='9' value={9} click={one} />
@@ -103,6 +103,27 @@ class Calculator extends React.Component {
     )
   }
 
+  operTablet() {
+    const Buttons = props => <button value={props.value} onClick={props.click} id="button">{props.display}</button>
+    
+    return(
+      <div id="table">
+        <div>
+          <Buttons display='+' value={'+'} click={one} />
+        </div>
+        <div>
+          <Buttons display='-' value={'-'} click={one} />
+        </div>
+        <div>
+          <Buttons display='*' value={'*'} click={one} />
+        </div>
+        <div>
+          <Buttons display='/' value={'/'} click={one} />
+        </div>
+      </div>
+    )
+  }
+
   render () {
     return (
       <div>
@@ -111,7 +132,9 @@ class Calculator extends React.Component {
             {this.renderInput('first_input', this.state.first_input)}
             {this.tablet(this.firstNumbers, this.firstClear)}
           </div>
-          <br/>
+          <div>
+            {this.operTablet()}
+          </div>
           <div>
             {this.renderInput('second_input', this.state.second_input)}
             {this.tablet(this.secondNumbers, this.secondClear)}
