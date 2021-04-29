@@ -52,7 +52,7 @@ class Calculator extends React.Component {
       second_input: 0
     })
   }
-
+  
   onChangeInput (event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -67,6 +67,12 @@ class Calculator extends React.Component {
         onChange={this.onChangeInput}
         id="input"
       />
+    )
+  }
+
+  renderResult() {
+    return(
+      <button id="enterResult">Enter</button>
     )
   }
   tablet(one, two) {
@@ -99,16 +105,19 @@ class Calculator extends React.Component {
 
   render () {
     return (
-      <div id="box">
-        <div>
-          {this.renderInput('first_input', this.state.first_input)}
-          {this.tablet(this.firstNumbers, this.firstClear)}
+      <div>
+        <div id="box">
+          <div>
+            {this.renderInput('first_input', this.state.first_input)}
+            {this.tablet(this.firstNumbers, this.firstClear)}
+          </div>
+          <br/>
+          <div>
+            {this.renderInput('second_input', this.state.second_input)}
+            {this.tablet(this.secondNumbers, this.secondClear)}
+          </div>
         </div>
-        <br/>
-        <div>
-          {this.renderInput('second_input', this.state.second_input)}
-          {this.tablet(this.secondNumbers, this.secondClear)}
-        </div>
+        {this.renderResult()}
       </div>
     );
   }
