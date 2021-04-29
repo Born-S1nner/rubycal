@@ -112,17 +112,8 @@ class Calculator extends React.Component {
         name='operation'
         value={one.name}
         disabled={disable}
+        id="operButton"
         style={{
-          border: 0,
-          margin: 10,
-          padding: 0,
-          borderRadius: 10,
-          display: 'inline-block',
-          width: 'calc(25% - 20px)',
-          height: '10vh',
-          minHeight: 50,
-          fontSize: '2em',
-          textAlign: 'center',
           color: 'white',
           backgroundColor: disable ? '#7FD0FF' : '#00A2FF'
         }}
@@ -134,10 +125,10 @@ class Calculator extends React.Component {
 
   render () {
     const isInputValid =
-      left_input >= 0 &&
-      left_input < 100 &&
-      right_input >= 0 &&
-      right_input < 100
+      this.state.first_input >= 0 &&
+      this.state.first_input < 100 &&
+      this.state.second_input >= 0 &&
+      this.state.second_input < 100
 
     const operations = [
       {
