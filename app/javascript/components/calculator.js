@@ -75,6 +75,7 @@ class Calculator extends React.Component {
       <button id="enterResult">Enter</button>
     )
   }
+
   tablet(one, two) {
     const Buttons = props => <button value={props.value} onClick={props.click} id="button">{props.display}</button>
 
@@ -103,28 +104,59 @@ class Calculator extends React.Component {
     )
   }
 
-  operTablet() {
-    const Buttons = props => <button value={props.value} onClick={props.click} id="button">{props.display}</button>
-    
-    return(
-      <div id="table">
-        <div>
-          <Buttons display='+' value={'+'} click={one} />
-        </div>
-        <div>
-          <Buttons display='-' value={'-'} click={one} />
-        </div>
-        <div>
-          <Buttons display='*' value={'*'} click={one} />
-        </div>
-        <div>
-          <Buttons display='/' value={'/'} click={one} />
-        </div>
-      </div>
-    )
+  operTablet(one, two) {
+     const disable = !two
+     return (
+      <button
+        key={one.name}
+        name='operation'
+        value={one.name}
+        disabled={disable}
+        style={{
+          border: 0,
+          margin: 10,
+          padding: 0,
+          borderRadius: 10,
+          display: 'inline-block',
+          width: 'calc(25% - 20px)',
+          height: '10vh',
+          minHeight: 50,
+          fontSize: '2em',
+          textAlign: 'center',
+          color: 'white',
+          backgroundColor: disable ? '#7FD0FF' : '#00A2FF'
+        }}
+      >
+        {one.symbol}
+      </button>
+     )
   }
 
   render () {
+    const isInputValid =
+      left_input >= 0 &&
+      left_input < 100 &&
+      right_input >= 0 &&
+      right_input < 100
+
+    const operations = [
+      {
+        symbol: '+',
+        name: 'sum_op'
+      },
+      {
+        symbol: '-',
+        name: 'difference_op'
+      },
+      {
+        symbol: '*',
+        name: 'multiplication_op'
+      },
+      {
+        symbol: '/',
+        name: 'division_op'
+      }
+    ]
     return (
       <div>
         <div id="box">
@@ -133,7 +165,9 @@ class Calculator extends React.Component {
             {this.tablet(this.firstNumbers, this.firstClear)}
           </div>
           <div>
-            {this.operTablet()}
+            {operations.map(operation => 
+              this.operTablet(operation, isInputValid)
+            )}
           </div>
           <div>
             {this.renderInput('second_input', this.state.second_input)}
