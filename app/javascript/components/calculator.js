@@ -113,10 +113,6 @@ class Calculator extends React.Component {
         value={one.name}
         disabled={disable}
         id="operButton"
-        style={{
-          color: 'white',
-          backgroundColor: disable ? '#7FD0FF' : '#00A2FF'
-        }}
       >
         {one.symbol}
       </button>
@@ -156,9 +152,12 @@ class Calculator extends React.Component {
             {this.tablet(this.firstNumbers, this.firstClear)}
           </div>
           <div>
-            {operations.map(operation => 
-              this.operTablet(operation, isInputValid)
-            )}
+            {this.renderInput('first_input', this.state.first_input)}
+            <div id="table">
+              {operations.map(operation => 
+                this.operTablet(operation, isInputValid)
+              )}
+            </div>
           </div>
           <div>
             {this.renderInput('second_input', this.state.second_input)}
