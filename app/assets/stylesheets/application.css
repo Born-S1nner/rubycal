@@ -24,6 +24,7 @@ body {
 #button {
   background-color: black;
   color: white;
+  width: 30%;
 }
 #enterResult {
   width: 100%;
@@ -34,4 +35,5 @@ body {
   background-color: black;
   color: white;
   text-align: center;
+  width: 45%;
 }
