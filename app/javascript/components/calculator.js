@@ -110,7 +110,7 @@ class Calculator extends React.Component {
   operation(e) {
     let op = e.currentTarget.value
     this.setState({
-      operations: op
+      operation_input: op
     })
   }
   operTablet(one, two) {
@@ -119,8 +119,9 @@ class Calculator extends React.Component {
       <button
         key={one.name}
         name='operation'
-        value={one.name}
+        value={one.value}
         disabled={disable}
+        onClick={this.operation}
         id="operButton"
       >
         {one.symbol}
@@ -138,18 +139,22 @@ class Calculator extends React.Component {
     const operations = [
       {
         symbol: '+',
+        value: '+',
         name: 'sum_op'
       },
       {
         symbol: '-',
+        value: '-',
         name: 'difference_op'
       },
       {
         symbol: '*',
+        value: '*',
         name: 'multiplication_op'
       },
       {
         symbol: '/',
+        value: '/',
         name: 'division_op'
       }
     ]
@@ -161,7 +166,7 @@ class Calculator extends React.Component {
             {this.tablet(this.firstNumbers, this.firstClear)}
           </div>
           <div>
-            {this.renderInput('operation', this.state.operation_input)}
+            {this.renderInput('operation_input', this.state.operation_input)}
             <div id="table">
               {operations.map(operation => 
                 this.operTablet(operation, isInputValid)
