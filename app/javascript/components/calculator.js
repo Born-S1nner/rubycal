@@ -15,7 +15,7 @@ class Calculator extends React.Component {
     this.state = {
       first_input: 0,
       second_input: 0,
-      operation_input: ''
+      operation_input: 0
     }
   }
   firstNumbers(e) {
@@ -107,6 +107,16 @@ class Calculator extends React.Component {
     )
   }
 
+  renderOpInput(name, value) {
+    return(
+      <input
+        name={name}
+        value={value}
+        onChange={this.onChangeInput}
+        id="input"
+      />
+    )
+  }
   operation(e) {
     let op = e.currentTarget.value
     this.setState({
@@ -166,7 +176,7 @@ class Calculator extends React.Component {
             {this.tablet(this.firstNumbers, this.firstClear)}
           </div>
           <div>
-            {this.renderInput('operation_input', this.state.operation_input)}
+            {this.renderOpInput('operation_input', this.state.operation_input)}
             <div id="table">
               {operations.map(operation => 
                 this.operTablet(operation, isInputValid)
