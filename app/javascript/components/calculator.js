@@ -15,7 +15,8 @@ class Calculator extends React.Component {
     this.state = {
       first_input: 0,
       second_input: 0,
-      operation_input: ''
+      operation_input: '',
+      operation_name: ''
     }
   }
   firstNumbers(e) {
@@ -72,13 +73,6 @@ class Calculator extends React.Component {
       />
     )
   }
-
-  renderResult() {
-    return(
-      <button id="enterResult">Enter</button>
-    )
-  }
-
   tablet(one, two) {
     const Buttons = props => <button value={props.value} onClick={props.click} id="button">{props.display}</button>
 
@@ -119,8 +113,10 @@ class Calculator extends React.Component {
   }
   operation(e) {
     let op = e.currentTarget.value
+    let name = e.currentTarget.name
     this.setState({
-      operation_input: op
+      operation_input: op,
+      operation_name: name
     })
   }
   operTablet(one, two) {
@@ -137,6 +133,32 @@ class Calculator extends React.Component {
         {one.symbol}
       </button>
      )
+  }
+
+  onSubmit(e) {
+    e.preventDefault()
+    const fetchOptions = {
+      method: 'post',
+      header: {
+        'Accept': 'text/plain',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        operation: this.state.operation_name,
+        first_input: this.state.left_value,
+        second_input: this.state.second_input
+      })
+    }
+  }
+  renderResult() {
+    return(
+      <button 
+        id="enterResult"
+        onClick={this.onSubmit}
+      >
+        Enter
+      </button>
+    )
   }
 
   render () {
