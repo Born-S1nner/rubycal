@@ -11,6 +11,7 @@ class Calculator extends React.Component {
     this.onChangeInput = this.onChangeInput.bind(this)
 
     this.operation = this.operation.bind(this)
+    this.OperClean = this.OperClean.bind(this)
 
     this.state = {
       first_input: 0,
@@ -113,26 +114,33 @@ class Calculator extends React.Component {
   }
   operation(e) {
     let op = e.currentTarget.value
-    let name = e.currentTarget.name
+    let name = e.currentTarget.key
     this.setState({
       operation_input: op,
       operation_name: name
     })
+    console.log(this.state.operation_name)
+  }
+  OperClean() {
+    this.setState({
+      operation_input: '',
+      operation_name: ''
+    })
   }
   operTablet(one, two) {
      const disable = !two
-     return (
+    return (
       <button
         key={one.name}
         name='operation'
-        value={one.value}
+        value={one.name}
         disabled={disable}
         onClick={this.operation}
         id="operButton"
       >
         {one.symbol}
       </button>
-     )
+    )
   }
 
   onSubmit(e) {
@@ -205,7 +213,7 @@ class Calculator extends React.Component {
               {operations.map(operation => 
                 this.operTablet(operation, isInputValid)
               )}
-              <button id="button">CE</button>
+              <button id="CEButton" onClick={this.OperClean}>CE</button>
             </div>
           </div>
           <div>
