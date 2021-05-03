@@ -35,3 +35,8 @@ body {
   text-align: center;
   width: 49%;
 }
+#CEButton {
+  width: 100%;
+  background-color: black;
+  color: white;
+}
