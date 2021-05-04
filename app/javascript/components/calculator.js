@@ -76,6 +76,7 @@ class Calculator extends React.Component {
   }
   tablet(one, two) {
     const Buttons = props => <button value={props.value} onClick={props.click} id="button">{props.display}</button>
+    const CEButtons = props => <button value={props.value} onClick={props.click} id="CETable">{props.display}</button>
 
     return(
       <div id="table">
@@ -96,7 +97,7 @@ class Calculator extends React.Component {
         </div>
         <div>
           <Buttons display='0' value={0} click={one} />
-          <Buttons display='CE' click={two} />
+          <CEButtons display='CE' click={two} />
         </div>
       </div>
     )
