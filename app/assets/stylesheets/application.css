@@ -11,6 +11,9 @@ body {
   display: flex;
   width: 100%;
 }
+#box-item {
+  margin: 10px 50px;
+}
 #CETable {
   background-color: red;
   color: white;
