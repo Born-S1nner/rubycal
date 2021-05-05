@@ -146,17 +146,18 @@ class Calculator extends React.Component {
 
   onSubmit(e) {
     e.preventDefault()
+    const details = {
+      first_input: this.state.first_input,
+      second_input: this.state.second_input,
+      operation: this.state.operation_name
+    }
     const fetchOptions = {
       method: 'post',
       header: {
         'Accept': 'text/plain',
         'Content-type': 'application/json'
       },
-      body: JSON.stringify({
-        operation: this.state.operation_input,
-        first_input: this.state.first_input,
-        second_input: this.state.second_input
-      })
+      body: JSON.stringify(details)
     }
     fetch('/calculations', fetchOptions)
       .then(data => data.text())
