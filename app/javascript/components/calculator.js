@@ -404,12 +404,12 @@ class Calculator extends React.Component {
       <div>
         <div id="box">
           <div id="box-item">
-            <h2 className="text-center">First Number</h2>
+            <h2 id="text-center">First Number</h2>
             {this.renderInput('first_input', this.state.first_input)}
             {this.tablet(this.firstNumbers, this.firstClear)}
           </div>
           <div id="box-item">
-            <h2 className="text-center">Operation</h2>
+            <h2 id="text-center">Operation</h2>
             {this.renderOpInput('operation_input', this.state.operation_input)}
             <div id="table">
               {operations.map(operation => 
@@ -419,7 +419,7 @@ class Calculator extends React.Component {
             </div>
           </div>
           <div id="box-item">
-          <h2 className="text-center">First Number</h2>
+          <h2 id="text-center">First Number</h2>
             {this.renderInput('second_input', this.state.second_input)}
             {this.tablet(this.secondNumbers, this.secondClear)}
           </div>
@@ -428,11 +428,6 @@ class Calculator extends React.Component {
         {this.renderResult()}
       </div>
     );
-  }
-}
-
-export default Calculator
-
   }
 }
 
